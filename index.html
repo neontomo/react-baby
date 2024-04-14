@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  data-theme="cyberpunk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/react-useState.js"></script>
+    <script src="js/react-useEffect.js"></script>
+    <script src="js/react-mini.js"></script>
+    <script src="js/script.js"></script>
+    <link
+      rel="stylesheet"
+      href="css/style.css" />
+  </head>
+  <body>
+    <div
+      id="root"
+      class="w-9/12 mx-auto my-32">
+      <div class="w-full h-full bg-white p-16 rounded-2xl">
+        <h1>React Mini</h1>
+        <div class="description bg-black text-white p-8 my-16 rounded-xl">
+          Hi there! My name is <b>{firstName} { lastName }</b> and I am {age}
+          years old.
+        </div>
+        <div class="my-16">
+          <h5>Click the buttons below to change states</h5>
+          <div class="flex gap-2 my-4">
+            <button
+              onclick="changeFirstName()"
+              class="btn btn-neutral rounded-xl">
+              Change first name
+            </button>
+            <button
+              onclick="changeLastName()"
+              class="btn btn-neutral rounded-xl">
+              Change last name
+            </button>
+            <button
+              onclick="changeAge()"
+              class="btn btn-neutral rounded-xl">
+              Change age
+            </button>
+            <button
+              onclick="changeBackgroundColor()"
+              class="btn btn-neutral rounded-xl">
+              Change background color
+            </button>
+          </div>
+        </div>
+        <div class="text-{textColor}">
+          This is a page where you can test out state management in React Mini.
+          It's a simple library that allows you to manage state in your
+          application without any bloat.
+
+          <div class="my-8">
+            <h3>Features:</h3>
+            <ul class="list-disc ml-8 mt-2 flex flex-col gap-2">
+              <li>Lightweight</li>
+              <li>Easy to use</li>
+              <li>Fast</li>
+            </ul>
+          </div>
+        </div>
+        <br />
+        <div class="grid w-full grid-cols-2 gap-8">
+          <div class="card bg-white shadow-xl rounded-xl">
+            <div class="card-body">
+              <h2 class="card-title">useState</h2>
+              <p>
+                Use the useState hook to set the state of the variables. You can
+                then use the variables in your HTML attributes and innerHTML.
+              </p>
+              <p class="font-mono text-sm mt-4"></p>
+            </div>
+          </div>
+
+          <div class="card w-full bg-white shadow-xl rounded-xl">
+            <div class="card-body">
+              <h2 class="card-title">useEffect</h2>
+              <p>
+                Use the useEffect hook to trigger new actions when the state
+                changes. You can then use the variables in your HTML attributes
+                and innerHTML.
+              </p>
+              <p class="font-mono text-sm mt-4"></p>
+            </div>
+          </div>
+
+          <div class="card bg-white shadow-xl rounded-xl">
+            <div class="card-body">
+              <h2 class="card-title">Inline variables</h2>
+              <p>
+                Use the useState hook to set the state of the variables. You can
+                then use the variables in your HTML attributes and innerHTML.
+              </p>
+              <span
+                class="font-mono text-sm mt-4 bg-{firstName}"
+                text="{inlineVariables}"
+                >yo</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
