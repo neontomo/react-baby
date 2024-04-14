@@ -1,7 +1,7 @@
 const [firstName, setFirstName] = useState('Tomo')
 const [lastName, setLastName] = useState('Myrman')
 const [age, setAge] = useState(30)
-const [inlineVariables, setInlineVariables] = useState('himare')
+const [background, setBackground] = useState('black')
 
 const changeFirstName = () => {
   if (firstName() === 'Tomo') {
@@ -33,7 +33,7 @@ const changeBackgroundColor = () => {
 }
 
 useEffect(() => {
-  console.log('Initial render')
+  console.log('Initial useEffect render')
 }, [])
 
 useEffect(() => {
@@ -43,3 +43,8 @@ useEffect(() => {
 useEffect(() => {
   console.log('CHANGED: lastName:', lastName())
 }, [lastName])
+
+// on page loaded
+setTimeout(() => {
+  query('#example-inline').innerHTML = 'Blobby'
+}, 100)

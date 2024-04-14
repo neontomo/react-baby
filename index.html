@@ -50,14 +50,9 @@
               class="btn btn-neutral rounded-xl">
               Change age
             </button>
-            <button
-              onclick="changeBackgroundColor()"
-              class="btn btn-neutral rounded-xl">
-              Change background color
-            </button>
           </div>
         </div>
-        <div class="text-{textColor}">
+        <div class="bg-{background}">
           This is a page where you can test out state management in React Mini.
           It's a simple library that allows you to manage state in your
           application without any bloat.
@@ -68,6 +63,11 @@
               <li>Lightweight</li>
               <li>Easy to use</li>
               <li>Fast</li>
+            </ul>
+            <h3 class="my-8">Limitations:</h3>
+            <ul class="list-disc ml-8 mt-2 flex flex-col gap-2">
+              <li>No support for components</li>
+              <li>Inline variables still buggy</li>
             </ul>
           </div>
         </div>
@@ -103,11 +103,7 @@
                 Use the useState hook to set the state of the variables. You can
                 then use the variables in your HTML attributes and innerHTML.
               </p>
-              <span
-                class="font-mono text-sm mt-4 bg-{firstName}"
-                text="{inlineVariables}"
-                >yo</span
-              >
+              <p id="example-inline">hiim</p>
             </div>
           </div>
         </div>

@@ -6,11 +6,6 @@ const setReactData = (allElements) => {
     const attributesIgnoreList = ['onclick', 'onchange', 'text']
     const variableRegex = /{([^}]+)}/g
 
-    if (element.innerHTML.match(variableRegex)) {
-      console.log(element.innerHTML)
-      element.setAttribute('data-react-html', element.innerHTML)
-    }
-
     Array.from(element.attributes).forEach((attribute) => {
       if (
         attributesIgnoreList.includes(attribute.name) ||
@@ -43,51 +38,38 @@ const replaceAttributeWithVariables = (element, attribute) => {
       }
     })
 
-  if (attribute === 'html') {
-    if (newAttribute === element.innerHTML || !element.innerHTML) {
-      return
-    }
-
-    element.innerHTML = newAttribute
-
+  if (newAttribute === element.getAttribute(attribute)) {
     return
-  } else {
-    if (newAttribute === element.getAttribute(attribute)) {
-      return
-    }
-    element.setAttribute(attribute, newAttribute)
   }
+  element.setAttribute(attribute, newAttribute)
 }
 
 const updateAllElementValues = () => {
-  Array.from(document.querySelectorAll('#root *'))
-    .filter((element) =>
-      Array.from(element.attributes).some((attr) =>
-        attr.name.startsWith('data-react-')
-      )
+  const dataReactElements = Array.from(
+    document.querySelectorAll('#root *')
+  ).filter((element) =>
+    Array.from(element.attributes).some((attr) =>
+      attr.name.startsWith('data-react-')
     )
-    .forEach((element) => {
-      Array.from(element.attributes).forEach((attribute) => {
-        if (attribute.name.match(/^data-react-/)) {
-          replaceAttributeWithVariables(
-            element,
-            attribute.name.replace('data-react-', '')
-          )
-        }
-      })
+  )
 
-      if (element.getAttribute('data-react-html')) {
-        replaceAttributeWithVariables(element, 'html')
+  dataReactElements.forEach((element) => {
+    Array.from(element.attributes).forEach((attribute) => {
+      if (attribute.name.match(/^data-react-/)) {
+        replaceAttributeWithVariables(
+          element,
+          attribute.name.replace('data-react-', '')
+        )
       }
     })
+  })
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  const root = queryAll('#root')
-  const allElements = root[0].querySelectorAll('*')
+  const root = query('#root')
+  const allElements = root.querySelectorAll('*')
 
-  setReactData(root)
-
+  setReactData(allElements)
   updateAllElementValues()
 })
 
