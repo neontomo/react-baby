@@ -2,7 +2,7 @@
 
 React Baby is a lightweight state management library that simplifies state management in web applications. Below you'll find a brief description, along with a link to the live demo and a screenshot showcasing its functionality.
 
-Link to project: [React Baby Demo](https://reactbaby.netlify.app)
+Link to project: [React Baby Demo](https://reactbaby.neontomo.com)
 
 <img width="560" alt="react-baby" src="https://github.com/neontomo/react-baby/assets/105588693/7dd4e6af-8ca0-4b73-a772-43b866b053ae">
 
