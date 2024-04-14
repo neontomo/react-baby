@@ -85,4 +85,4 @@ observer.observe(document.documentElement, {
   subtree: true
 })
 
-console.log('React Mini loaded')
+console.log('React Baby loaded')

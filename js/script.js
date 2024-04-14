@@ -1,50 +1,46 @@
-const [firstName, setFirstName] = useState('Tomo')
-const [lastName, setLastName] = useState('Myrman')
-const [age, setAge] = useState(30)
-const [background, setBackground] = useState('black')
+const [background, setBackground] = useState('[#222]')
+const [textColour, setTextColour] = useState('white')
 
-const changeFirstName = () => {
-  if (firstName() === 'Tomo') {
-    setFirstName('Peter')
-  } else {
-    setFirstName('Tomo')
-  }
-}
-
-const changeLastName = () => {
-  if (lastName() === 'Myrman') {
-    setLastName('Pan')
-  } else {
-    setLastName('Myrman')
-  }
-}
-
-const changeAge = () => {
-  setAge(age() + 1)
-}
-
-const changeBackgroundColor = () => {
-  const randomColor = Math.floor(Math.random() * 16777215).toString(16)
-  if (background() === 'blue-400') {
-    setBackground(`[#${randomColor}]`)
-  } else {
-    setBackground('blue-400')
-  }
-}
+const randomColour = () => Math.floor(Math.random() * 16777215).toString(16)
 
 useEffect(() => {
   console.log('Initial useEffect render')
 }, [])
 
 useEffect(() => {
-  console.log('CHANGED: firstName:', firstName())
-}, [firstName])
+  console.log('CHANGED: background:', background())
+}, [background])
 
 useEffect(() => {
-  console.log('CHANGED: lastName:', lastName())
-}, [lastName])
+  console.log('CHANGED: textColour:', textColour())
+}, [textColour])
 
-// on page loaded
-setTimeout(() => {
-  query('#example-inline').innerHTML = 'Blobby'
-}, 100)
+window.addEventListener('load', () => {
+  document.querySelector('.example-usestate').innerText =
+    'const [background, setBackground] = useState("black")\n\n' +
+    'console.log(background()) // black\n\n' +
+    'setBackground("red")\n\n' +
+    'console.log(background()) // red'
+
+  document.querySelector('.example-useeffect').innerText =
+    '// Empty useEffect for on load:\n\n' +
+    'useEffect(() => {\n' +
+    '  console.log("Initial useEffect render")\n' +
+    '}, [])\n\n' +
+    '// One useEffect:\n\n' +
+    'useEffect(() => {\n' +
+    '  console.log("background:", background())\n' +
+    '}, [background])\n\n' +
+    '// More than one useEffect:\n\n' +
+    'useEffect(() => {\n' +
+    '  console.log("textColour:", textColour(), "background:", background())\n' +
+    '}, [background, textColour])'
+
+  query('.example-inline').innerText =
+    '// Set initial variables:\n\n' +
+    'const [background, setBackground] = useState("black")\n\n' +
+    '// Inline style:\n\n' +
+    '<h1 style="background: {background}">Welcome</h1>\n\n' +
+    '// Or in Tailwind:\n\n' +
+    '<h1 className={"bg-{background}"}>Welcome</h1>'
+})

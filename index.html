@@ -7,16 +7,42 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>React Baby - A lightweight state management library</title>
+    <meta
+      name="description"
+      content="React Baby is a lightweight state management library that allows you to manage state in your application without any bloat." />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png" />
+    <link
+      rel="manifest"
+      href="favicon/site.webmanifest" />
+    <meta
+      name="msapplication-TileColor"
+      content="#da532c" />
+    <meta
+      name="theme-color"
+      content="#ffffff" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css"
       rel="stylesheet"
       type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/react-useState.js"></script>
-    <script src="js/react-useEffect.js"></script>
-    <script src="js/react-mini.js"></script>
+    <script src="js/react-baby-useState.js"></script>
+    <script src="js/react-baby-useEffect.js"></script>
+    <script src="js/react-baby.js"></script>
     <script src="js/script.js"></script>
     <link
       rel="stylesheet"
@@ -25,87 +51,106 @@
   <body>
     <div
       id="root"
-      class="w-9/12 mx-auto my-32">
+      class="w-9/12 mx-auto my-32 font-sans">
       <div class="w-full h-full bg-white p-16 rounded-2xl">
-        <h1>React Mini</h1>
-        <div class="description bg-black text-white p-8 my-16 rounded-xl">
-          Hi there! My name is <b>{firstName} { lastName }</b> and I am {age}
-          years old.
-        </div>
-        <div class="my-16">
-          <h5>Click the buttons below to change states</h5>
-          <div class="flex gap-2 my-4">
-            <button
-              onclick="changeFirstName()"
-              class="btn btn-neutral rounded-xl">
-              Change first name
-            </button>
-            <button
-              onclick="changeLastName()"
-              class="btn btn-neutral rounded-xl">
-              Change last name
-            </button>
-            <button
-              onclick="changeAge()"
-              class="btn btn-neutral rounded-xl">
-              Change age
-            </button>
-          </div>
-        </div>
-        <div class="bg-{background}">
-          This is a page where you can test out state management in React Mini.
-          It's a simple library that allows you to manage state in your
-          application without any bloat.
-
-          <div class="my-8">
-            <h3>Features:</h3>
-            <ul class="list-disc ml-8 mt-2 flex flex-col gap-2">
-              <li>Lightweight</li>
-              <li>Easy to use</li>
-              <li>Fast</li>
-            </ul>
-            <h3 class="my-8">Limitations:</h3>
-            <ul class="list-disc ml-8 mt-2 flex flex-col gap-2">
-              <li>No support for components</li>
-              <li>Inline variables still buggy</li>
-            </ul>
-          </div>
-        </div>
-        <br />
-        <div class="grid w-full grid-cols-2 gap-8">
-          <div class="card bg-white shadow-xl rounded-xl">
-            <div class="card-body">
-              <h2 class="card-title">useState</h2>
-              <p>
-                Use the useState hook to set the state of the variables. You can
-                then use the variables in your HTML attributes and innerHTML.
-              </p>
-              <p class="font-mono text-sm mt-4"></p>
+        <div class="flex flex-col gap-16">
+          <section class="flex flex-col gap-6">
+            <h1>React Baby</h1>
+            <div
+              class="description bg-black text-white p-8 rounded-xl bg-{background} text-{textColour}">
+              Hi there! My name is Tomo Myrman, and I'm a web developer. I
+              created a simple library called React Baby that allows you to
+              manage state in your application without any bloat.
+              <br /><br />
+              This is a page where you can test out the library.
             </div>
-          </div>
-
-          <div class="card w-full bg-white shadow-xl rounded-xl">
-            <div class="card-body">
-              <h2 class="card-title">useEffect</h2>
-              <p>
-                Use the useEffect hook to trigger new actions when the state
-                changes. You can then use the variables in your HTML attributes
-                and innerHTML.
-              </p>
-              <p class="font-mono text-sm mt-4"></p>
+            <h5>Click the buttons below to change states</h5>
+            <div class="flex gap-4">
+              <button
+                onclick="setBackground(`[#${randomColour()}]`)"
+                class="btn btn-neutral rounded-xl">
+                Change {background}
+              </button>
+              <button
+                onclick="setTextColour(`[#${randomColour()}]`)"
+                class="btn btn-neutral rounded-xl">
+                Change {textColour}
+              </button>
             </div>
-          </div>
-
-          <div class="card bg-white shadow-xl rounded-xl">
-            <div class="card-body">
-              <h2 class="card-title">Inline variables</h2>
-              <p>
-                Use the useState hook to set the state of the variables. You can
-                then use the variables in your HTML attributes and innerHTML.
-              </p>
-              <p id="example-inline">hiim</p>
+          </section>
+          <section>
+            <div class="flex flex-col gap-6">
+              <div>
+                <h3>Benefits:</h3>
+                <ul class="list-disc ml-8 mt-2 flex flex-col gap-2">
+                  <li>Lightweight (3KB)</li>
+                  <li>Get up and running immediately</li>
+                  <li>
+                    Not a framework - add it to any one-pager and start using it
+                  </li>
+                  <li>Works well with Tailwind</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Room for improvement:</h3>
+                <ul class="list-disc ml-8 mt-2 flex flex-col gap-2">
+                  <li>Add support for building components</li>
+                  <li>
+                    Allowing inline variables to be used in innerHTML (not just
+                    in attributes)
+                  </li>
+                  <li>
+                    Allowing useEffect variables to be called without () at the
+                    end
+                  </li>
+                  <li>Run useEffect without time interval</li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </section>
+          <section>
+            <div class="text-center mb-8">
+              <h2>Features</h2>
+            </div>
+            <div class="grid w-full grid-cols-2 gap-8">
+              <div class="card bg-white shadow-xl rounded-xl">
+                <div class="card-body">
+                  <h3 class="card-title">useState</h3>
+                  <p>
+                    Use the useState hook to set the state of the variables. You
+                    can then use the variables in your HTML attributes.
+                  </p>
+                  <p
+                    class="example-usestate font-mono text-xs mt-4 text-gray-300 bg-[#222] rounded-xl p-4"></p>
+                </div>
+              </div>
+
+              <div class="card w-full bg-white shadow-xl rounded-xl">
+                <div class="card-body">
+                  <h3 class="card-title">useEffect</h3>
+                  <p>
+                    Use the useEffect hook to trigger custom actions whenever
+                    the state changes.
+                  </p>
+                  <p
+                    class="example-useeffect font-mono text-xs mt-4 text-gray-300 bg-[#222] rounded-xl p-4"></p>
+                </div>
+              </div>
+
+              <div class="card bg-white shadow-xl rounded-xl">
+                <div class="card-body">
+                  <h3 class="card-title">Inline variables</h3>
+                  <p>
+                    Use the useState hook to set the state of the variables. You
+                    can then use the variables in your HTML attributes (like
+                    class and style), and soon in your innerHTML.
+                  </p>
+                  <p
+                    class="example-inline font-mono text-xs mt-4 text-gray-300 bg-[#222] rounded-xl p-4"></p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
