@@ -51,8 +51,8 @@
   <body>
     <div
       id="root"
-      class="w-9/12 mx-auto my-32 font-sans">
-      <div class="w-full h-full bg-white p-16 rounded-2xl">
+      class="w-full md:w-9/12 mx-auto my-32 p-4 font-sans">
+      <div class="w-full h-full bg-white p-8 md:p-16 rounded-2xl">
         <div class="flex flex-col gap-16">
           <section class="flex flex-col gap-6">
             <h1>React Baby</h1>
@@ -65,7 +65,7 @@
               This is a page where you can test out the library.
             </div>
             <h5>Click the buttons below to change states</h5>
-            <div class="flex gap-4">
+            <div class="flex flex-col md:flex-row gap-4">
               <button
                 onclick="setBackground(`[#${randomColour()}]`)"
                 class="btn btn-neutral rounded-xl">
@@ -112,7 +112,7 @@
             <div class="text-center mb-8">
               <h2>Features</h2>
             </div>
-            <div class="grid w-full grid-cols-2 gap-8">
+            <div class="grid w-full grid-cols-1 md:grid-cols-2 gap-8">
               <div class="card bg-white shadow-xl rounded-xl">
                 <div class="card-body">
                   <h3 class="card-title">useState</h3>
@@ -154,5 +154,19 @@
         </div>
       </div>
     </div>
+    <footer>
+      <div
+        class="fixed bottom-0 left-0 w-full bg-black text-white text-center py-2">
+        <p>
+          Made with ❤️ by
+          <a
+            href="https://github.com/neontomo"
+            target="_blank"
+            class="text-blue-400">
+            Tomo Myrman
+          </a>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>
